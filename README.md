@@ -106,10 +106,11 @@ Python is the programming language this tool is written in. You need to install 
 
 ### Step 2: Download the Code
 
-#### **Option A: Download ZIP File (Easiest)**
+#### **Option A: Download ZIP File (Easiest - No GitHub Account Required)**
 
 1. Go to [https://github.com/Quenos/option_chain_fetcher](https://github.com/Quenos/option_chain_fetcher)
-2. Click the green **"Code"** button
+   - **No login required** - the repository is public
+2. Click the green **"Code"** button (near the top right)
 3. Click **"Download ZIP"**
 4. Extract the ZIP file to a folder on your computer
    - **macOS**: Double-click the ZIP file
