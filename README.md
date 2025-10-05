@@ -228,6 +228,8 @@ python option_chain_fetcher.py --max_dte 7 --min_strike 5800 --max_strike 6000
 
 This fetches options expiring in the next 7 days with strikes between 5800 and 6000.
 
+**⏱️ Performance Note**: The fetcher retrieves data for each option individually. For large date ranges (high `max_dte`) and wide strike ranges, the process can take **several minutes to complete**. This is normal as the tool is fetching quotes and Greeks for hundreds or thousands of options. The script will show progress in the console and log file.
+
 ### Export to JSON
 
 **macOS:**
