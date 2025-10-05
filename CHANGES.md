@@ -172,3 +172,4 @@ All required dependencies are already in `requirements.txt`:
 
 ## Backward Compatibility
 This is a complete refactor. The old trading bot functionality has been removed. If you need the old functionality, retrieve it from git history.
+

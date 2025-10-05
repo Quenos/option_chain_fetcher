@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CHANGES.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="changes-to-optionchainfetcherpy">Changes to option_chain_fetcher.py</h1>
+<h2 id="summary">Summary</h2>
+<p>Completely refactored <code>option_chain_fetcher.py</code> from a trading bot to a data collection tool that fetches SPX option chain data and stores it in a SQLite database.</p>
+<h2 id="new-features">New Features</h2>
+<h3 id="1-cli-parameters">1. CLI Parameters</h3>
+<p>The script now accepts command-line arguments:</p>
+<ul>
+<li><code>--max_dte</code>: Maximum days to expiration (required for data fetching)</li>
+<li><code>--min_strike</code>: Minimum strike price (required for data fetching)</li>
+<li><code>--max_strike</code>: Maximum strike price (required for data fetching)</li>
+<li><code>--symbol</code>: Underlying symbol (optional, default: SPX)</li>
+<li><code>--db_path</code>: Database file path (optional, default: database/option_chain_data.db)</li>
+<li><code>--clear_db</code>: Clear all data from the database and exit (optional flag)</li>
+</ul>
+<h3 id="2-data-collection">2. Data Collection</h3>
+<ul>
+<li>Fetches all option chains for expirations from 0 to max_dte days</li>
+<li>Includes both CALL and PUT options for all strikes in the specified range</li>
+<li><strong>SPX/SPXW Handling</strong>: When requesting SPX or SPXW, automatically fetches BOTH:
+<ul>
+<li>SPX (monthly/quarterly expirations)</li>
+<li>SPXW (weekly expirations)</li>
+</ul>
+</li>
+<li><strong>Underlying Price Tracking</strong>: Fetches and stores the underlying symbol price at fetch time
+<ul>
+<li>For SPX/SPXW options, always fetches SPX price (not SPXW)</li>
+<li>For other symbols, fetches the actual symbol price</li>
+<li>Stores bid, ask, and mid prices</li>
+</ul>
+</li>
+<li>Retrieves bid/ask quotes using the existing MarketData class</li>
+<li>Fetches all Greeks (delta, gamma, theta, vega, rho) for each option</li>
+</ul>
+<h3 id="3-sqlite-database">3. SQLite Database</h3>
+<ul>
+<li>Stores all data in a SQLite database with proper indexing</li>
+<li>Default location: <code>database/option_chain_data.db</code></li>
+<li><code>fetch_timestamp</code> field records when each dataset was collected (ISO format)</li>
+<li>Unique constraint on (fetch_timestamp, symbol) prevents duplicates</li>
+<li>Indexed by fetch_timestamp and expiration_date for fast queries</li>
+</ul>
+<h3 id="4-database-schema">4. Database Schema</h3>
+<h4 id="table-optionchaindata">Table: <code>option_chain_data</code></h4>
+<ul>
+<li>fetch_timestamp (TEXT) - ISO timestamp when data was fetched</li>
+<li>symbol (TEXT) - Option symbol</li>
+<li>expiration_date (TEXT) - Expiration date</li>
+<li>strike_price (REAL) - Strike price</li>
+<li>option_type (TEXT) - 'CALL' or 'PUT'</li>
+<li>bid_price, ask_price, mid_price (REAL) - Quote data</li>
+<li>delta, gamma, theta, vega, rho (REAL) - Greeks</li>
+<li>days_to_expiration (INTEGER) - DTE</li>
+</ul>
+<h4 id="table-underlyingprices">Table: <code>underlying_prices</code></h4>
+<ul>
+<li>fetch_timestamp (TEXT) - ISO timestamp when data was fetched</li>
+<li>symbol (TEXT) - Underlying symbol (e.g., SPX)</li>
+<li>price (REAL) - Mid price of underlying</li>
+<li>bid_price (REAL) - Bid price of underlying</li>
+<li>ask_price (REAL) - Ask price of underlying</li>
+</ul>
+<p><strong>Note:</strong> For SPX/SPXW options, the underlying price is always recorded as SPX (not SPXW), as both option types reference the same underlying index.</p>
+<h2 id="usage-examples">Usage Examples</h2>
+<pre class="hljs"><code><div><span class="hljs-comment"># Fetch 0-7 DTE options with strikes 5800-6000</span>
+python option_chain_fetcher.py --max_dte 7 --min_strike 5800 --max_strike 6000
+
+<span class="hljs-comment"># Clear all data from the database</span>
+python option_chain_fetcher.py --clear_db
+
+<span class="hljs-comment"># Clear a specific database</span>
+python option_chain_fetcher.py --clear_db --db_path my_data.db
+</div></code></pre>
+<h2 id="additional-files-created">Additional Files Created</h2>
+<h3 id="1-exporttojsonpy">1. export_to_json.py</h3>
+<p>Python script to export database to JSON files:</p>
+<ul>
+<li>One JSON file per expiration date</li>
+<li>Data organized by strike with CALL/PUT sub-records</li>
+<li>Extensive CLI filtering options:
+<ul>
+<li><code>--start_date</code>, <code>--end_date</code>: Filter by expiration date range</li>
+<li><code>--min_strike</code>, <code>--max_strike</code>: Filter by strike range</li>
+<li><code>--min_delta</code>, <code>--max_delta</code>: Filter by absolute delta</li>
+<li><code>--expiration_date</code>: Export single expiration</li>
+<li><code>--fetch_timestamp</code>: Export specific fetch</li>
+</ul>
+</li>
+<li>Clean JSON structure ideal for analysis and visualization</li>
+</ul>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Export Oct 6-10, strikes 5800-6000, deltas 0.25-0.45</span>
+python export_to_json.py \
+    --start_date 2025-10-06 \
+    --end_date 2025-10-10 \
+    --min_strike 5800 \
+    --max_strike 6000 \
+    --min_delta 0.25 \
+    --max_delta 0.45
+</div></code></pre>
+<h3 id="2-jsonexportguidemd">2. JSON_EXPORT_GUIDE.md</h3>
+<p>Complete documentation for the JSON export script:</p>
+<ul>
+<li>JSON structure explanation</li>
+<li>All CLI parameters</li>
+<li>Usage examples for various scenarios</li>
+<li>Code examples in Python and JavaScript</li>
+<li>Data analysis examples</li>
+</ul>
+<h3 id="3-optionchainusagemd">3. OPTION_CHAIN_USAGE.md</h3>
+<p>Comprehensive usage guide including:</p>
+<ul>
+<li>Parameter descriptions</li>
+<li>Multiple usage examples</li>
+<li>Database schema documentation</li>
+<li>Query examples</li>
+</ul>
+<h3 id="4-queryoptiondatapy">4. query_option_data.py</h3>
+<p>Helper script to query the database with multiple modes:</p>
+<ul>
+<li><code>list</code>: Show all available fetch timestamps</li>
+<li><code>summary</code>: Display statistics for a fetch</li>
+<li><code>delta</code>: Query options by delta range</li>
+<li><code>expiration</code>: Query options for a specific expiration date</li>
+</ul>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Show summary of latest fetch</span>
+python query_option_data.py --action summary
+
+<span class="hljs-comment"># Find CALLs with delta 0.25-0.35</span>
+python query_option_data.py --action delta --option_type CALL --min_delta 0.25 --max_delta 0.35
+</div></code></pre>
+<h2 id="technical-details">Technical Details</h2>
+<h3 id="logging">Logging</h3>
+<ul>
+<li>Logs to <code>option_chain_fetcher.log</code> and console</li>
+<li>INFO level for normal operations</li>
+<li>WARNING for missing data</li>
+<li>ERROR with stack traces for failures</li>
+</ul>
+<h3 id="error-handling">Error Handling</h3>
+<ul>
+<li>Gracefully handles missing quotes or Greeks</li>
+<li>Continues fetching even if some symbols fail</li>
+<li>Logs warnings for incomplete data</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Fetches quotes and Greeks separately with retry logic</li>
+<li>Maximum 50 attempts per data type with 5-second intervals</li>
+<li>Stores data in single transaction for consistency</li>
+</ul>
+<h3 id="spx-symbol-handling">SPX Symbol Handling</h3>
+<ul>
+<li>Automatically detects SPX/SPXW symbols (case-insensitive)</li>
+<li>Fetches both symbol types in a single run</li>
+<li>Error handling for each symbol independently (if one fails, the other continues)</li>
+<li>Combined results in single database with all expirations</li>
+</ul>
+<h2 id="folder-structure">Folder Structure</h2>
+<p>The project now organizes data files in dedicated directories:</p>
+<pre class="hljs"><code><div>spx_option_chain_fetcher/
+├── database/              # SQLite database files (gitignored)
+│   └── option_chain_data.db
+├── json_exports/          # Exported JSON files (gitignored)
+│   └── spx_options_*.json
+├── *.log                  # Log files (gitignored)
+└── ...
+</div></code></pre>
+<p><strong>Note:</strong> Both <code>database/</code> and <code>json_exports/</code> directories are automatically created when needed and are excluded from git.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>All required dependencies are already in <code>requirements.txt</code>:</p>
+<ul>
+<li>tastytrade</li>
+<li>python-dotenv</li>
+<li>sqlite3 (built-in to Python)</li>
+</ul>
+<h2 id="backward-compatibility">Backward Compatibility</h2>
+<p>This is a complete refactor. The old trading bot functionality has been removed. If you need the old functionality, retrieve it from git history.</p>
+
+</body>
+</html>

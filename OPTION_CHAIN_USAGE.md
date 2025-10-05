@@ -174,3 +174,4 @@ Log levels include INFO, WARNING, and ERROR messages for monitoring the fetch pr
 - The `fetch_timestamp` field allows you to track when each dataset was collected
 - Unique constraint on (fetch_timestamp, symbol) prevents duplicate entries
 - Market data streamer needs a few seconds to initialize before fetching data
+  
